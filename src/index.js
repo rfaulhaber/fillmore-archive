@@ -1,13 +1,16 @@
+import {createStore} from 'redux';
+import reducers from './reducers/index';
+
+const store = createStore(reducers);
+
 console.log('index loaded');
 
-const chromeTabsQuery = {
-    active: true,
-    currentWindow: true
-};
 
 let pageDocument;
 
-loadBody();
+loadBody().then(() => {
+    console.log('pageDocument', pageDocument);
+});
 
 function getCurrentTab() {
     console.log('getting current tab');

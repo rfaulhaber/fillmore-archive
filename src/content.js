@@ -1,11 +1,18 @@
+import {GET_INPUTS} from './actions/PageActions';
 chrome.runtime.onMessage.addListener(contentListener);
 
 function contentListener(request, sender, sendResponse) {
     switch(request.type) {
-        case 'document':
+        case GET_INPUTS:
+            const inputs = document.getElementsByTagName('input').map(element => ({
+                id: element.id,
+                type: element.type
+            }));
+
             sendResponse({
-                document
+                inputs
             });
+
             return true;
         default:
             sendResponse({
