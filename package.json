@@ -1,0 +1,10 @@
+{
+  "name": "fillmore",
+  "version": "0.0.1",
+  "description": "Chrome extension for automatically filling out forms",
+  "main": "index.js",
+  "repository": "https://github.com/rfaulhaber/fillmore",
+  "author": "Ryan Faulhaber",
+  "license": "MIT",
+  "private": false
+}
