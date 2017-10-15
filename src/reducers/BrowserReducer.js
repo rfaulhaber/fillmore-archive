@@ -4,7 +4,7 @@ import {
     RECEIVE_RESPONSE
 } from '../actions/BrowserActions';
 
-export function Browser(state = {}, action) {
+export default function Browser(state = {}, action) {
     switch(action.type) {
         case SET_CURRENT_TAB:
             return makeNewState(state, {

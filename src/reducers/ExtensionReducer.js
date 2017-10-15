@@ -6,7 +6,7 @@ const initialState = {
     listeners: []
 };
 
-export function Extension(state = initialState, action) {
+export default function Extension(state = initialState, action) {
     switch(action.type) {
         case ADD_EVENT_LISTENER:
             return Object.assign({}, state, {

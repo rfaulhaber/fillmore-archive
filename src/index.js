@@ -6,6 +6,6 @@ import reducers from './reducers/index';
 
 const store = createStore(reducers, applyMiddleware(thunk));
 
-store.dispatch(addEventListener(scanButtonListener));
+store.dispatch(addEventListener(scanButtonListener()));
 
 setAllListeners(store.getState().Extension.listeners);
