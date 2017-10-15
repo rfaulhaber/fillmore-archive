@@ -5,7 +5,7 @@ export function scanButtonListener() {
         callback: () => {
             console.log('I was clicked!');
         }
-    }
+    };
 }
 
 export function setAllListeners(listeners) {

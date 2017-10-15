@@ -8,11 +8,11 @@ const initialState = {
 
 export default function Extension(state = initialState, action) {
     switch(action.type) {
-        case ADD_EVENT_LISTENER:
-            return Object.assign({}, state, {
-                listeners: state.listeners.concat(action.listener)
-            });
-        default:
-            return state;
+    case ADD_EVENT_LISTENER:
+        return Object.assign({}, state, {
+            listeners: state.listeners.concat(action.listener)
+        });
+    default:
+        return state;
     }
 }

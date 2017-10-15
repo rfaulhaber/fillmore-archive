@@ -14,5 +14,5 @@ export function fillInputs(values) {
     return {
         type: FILL_INPUTS,
         values
-    }
+    };
 }

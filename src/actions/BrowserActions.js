@@ -35,5 +35,5 @@ function receiveResponse(response) {
     return {
         type: RECEIVE_RESPONSE, 
         response
-    }
+    };
 }
