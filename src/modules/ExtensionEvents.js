@@ -1,9 +1,13 @@
-export function scanButtonListener() {
+import {changeLayout} from '../actions/ExtensionActions';
+import {layouts} from './Extension';
+
+export function scanButtonListener(dispatch) {
     return {
         id: 'scan-button',
         type: 'click',
         callback: () => {
             console.log('I was clicked!');
+            dispatch(changeLayout(layouts.formFill));
         }
     };
 }
