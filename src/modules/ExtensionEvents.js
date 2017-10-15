@@ -1,11 +1,16 @@
-export function registerListener(id, type, callback) {
+export function scanButtonListener() {
     return {
-        id, type, callback
-    };
+        id: 'scan-button',
+        type: 'click',
+        callback: () => {
+            console.log('I was clicked!');
+        }
+    }
 }
 
 export function setAllListeners(listeners) {
     for (const listener of listeners) {
-        document.getElementById(listener.id).addEventListener(type, callback);
+        const {id, type, callback} = listener;
+        document.getElementById(id).addEventListener(type, callback);
     }
 }

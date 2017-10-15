@@ -8,7 +8,8 @@
   "license": "MIT",
   "private": false,
   "scripts": {
-    "build": "webpack --progress"
+    "build": "webpack --progress",
+    "dev": "WEBPACK_WATCH=watch webpack --progress"
   },
   "dependencies": {
     "redux": "^3.7.2",

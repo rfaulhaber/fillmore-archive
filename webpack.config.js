@@ -20,4 +20,9 @@ module.exports = {
       },
     ]
   },
+  devtool: '#source-map'
+}
+
+if (process.env.WEBPACK_WATCH === 'watch') {
+  module.exports.watch = true;
 }
