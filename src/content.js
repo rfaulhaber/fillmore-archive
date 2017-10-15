@@ -1,4 +1,4 @@
-import {GET_INPUTS} from './actions/PageActions';
+import {GET_INPUTS} from './modules/PageActions';
 import abstractElement from './modules/AbstractElement';
 
 chrome.runtime.onMessage.addListener(contentListener);
@@ -6,7 +6,7 @@ chrome.runtime.onMessage.addListener(contentListener);
 function contentListener(request, sender, sendResponse) {
     switch(request.type) {
     case GET_INPUTS:
-        const inputs = document.getElementsByTagName('input').map(element => abstractElement(element));
+        const inputs = Array.from(document.getElementsByTagName('input')).map(element => abstractElement(element));
 
         sendResponse({
             inputs

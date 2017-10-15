@@ -1,19 +1,29 @@
-import {changeLayout} from '../actions/ExtensionActions';
-import {layouts} from './Extension';
+import {layouts, show} from './Extension';
+import { queryCurrentTab, sendContentMessage } from './Browser';
+import { buildFormFill } from './Extension';
 
-export function scanButtonListener(dispatch) {
+export function scanButtonListener() {
     return {
         id: 'scan-button',
         type: 'click',
         callback: () => {
             console.log('I was clicked!');
-            dispatch(changeLayout(layouts.formFill));
+            show(layouts.formFill);
+
+            queryCurrentTab(chrome).then(tab => {
+                return sendContentMessage(chrome, tab.id, {type: 'GET_INPUTS'});
+            }).then(response => {
+                console.log('response', response);
+
+                buildFormFill(response.inputs);
+            });
         }
     };
 }
 
 export function setAllListeners(listeners) {
     for (const listener of listeners) {
+        console.log('listener', listener);
         const {id, type, callback} = listener;
         document.getElementById(id).addEventListener(type, callback);
     }
