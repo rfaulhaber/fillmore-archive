@@ -15,10 +15,18 @@ export function scanButtonListener() {
             }).then(response => {
                 console.log('response', response);
 
-                buildFormFill(response.inputs);
+                buildFormFill(response);
             });
         }
     };
+}
+
+export function saveButtonListener() {
+
+}
+
+export function fillButtonListener() {
+
 }
 
 export function setAllListeners(listeners) {

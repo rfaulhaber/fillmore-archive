@@ -7,9 +7,15 @@ function contentListener(request, sender, sendResponse) {
     switch(request.type) {
     case GET_INPUTS:
         const inputs = Array.from(document.getElementsByTagName('input')).map(element => abstractElement(element));
+        const labels = Array.from(document.getElementsByTagName('label'))
+            .filter(element => !!element.getAttribute('for'))
+            .map(element => abstractElement(element));
+
+        console.log('labels', labels);
 
         sendResponse({
-            inputs
+            inputs,
+            labels
         });
 
         return true;
