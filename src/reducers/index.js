@@ -1,8 +1,12 @@
 import {combineReducers} from 'redux';
 import Page from './PageReducer';
+import Extension from './ExtensionReducer';
+import Browser from './BrowserReducer';
 
 const reducers = combineReducers({
-    Page
+    Page,
+    Extension,
+    Browser
 });
 
 export default reducers;

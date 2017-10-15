@@ -17,21 +17,21 @@ export function sendPageMessage(browser, tab, message) {
     };
 }
 
-export function setCurrentTab(tab) {
+function setCurrentTab(tab) {
     return {
         type: SET_CURRENT_TAB,
         tab
     };
 }
 
-export function sendMessage(message) {
+function sendMessage(message) {
     return {
         type: SEND_MESSAGE,
         message
     };
 }
 
-export function receiveResponse(response) {
+function receiveResponse(response) {
     return {
         type: RECEIVE_RESPONSE, 
         response
