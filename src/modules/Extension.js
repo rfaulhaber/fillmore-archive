@@ -9,10 +9,6 @@ export function show(id) {
     for (const value of Object.values(layouts)) {
         const node = document.getElementById(value);
 
-        if (node === null) {
-            console.log('value: ', value, 'is null');
-        }
-
         if (value === id) {
             document.getElementById(value).style.display = 'initial';
         } else {
@@ -44,9 +40,9 @@ export function buildFormFill(tags) {
 
 function table(rows) {
     const table = document.createElement('table');
-    const tablerows = rows.map(row => tableRow(tableDetail(row[0]), tableDetail(row[1])));
+    const tableRows = rows.map(row => tableRow(tableDetail(row[0]), tableDetail(row[1])));
 
-    for (const row of tablerows) {
+    for (const row of tableRows) {
         table.appendChild(row);
     }
 
