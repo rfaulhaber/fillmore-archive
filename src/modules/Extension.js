@@ -32,6 +32,7 @@ export function buildFormFill(tags) {
                 rows.push([label(tag.id), input(tag)]);
                 break;
             case 'select':
+                rows.push([label(tag.id), select(tag)]);
                 break;
         }
     }
@@ -67,21 +68,39 @@ function tableDetail(content) {
     return td;
 }
 
-function input(node) {
+function input(abstractNode) {
     const input = document.createElement('input');
-    input.setAttribute('id', node.id);
+    input.setAttribute('id', abstractNode.id);
 
-    if (node.type === 'password') {
+    if (abstractNode.type === 'password') {
         input.type = 'text';
     } else {
-        input.type = node.type;
+        input.type = abstractNode.type;
     }
 
     return input;
 }
 
-function select(selectNode, select) {
+function select(abstractNode) {
+    const select = document.createElement('select');
+    select.setAttribute('id', abstractNode.id);
 
+    const options = abstractNode.options.map(o => option(o));
+
+    for (const o of options) {
+        select.options.add(o);
+    }
+
+    return select;
+}
+
+function option(abstractNode) {
+    const option = document.createElement('option');
+    option.setAttribute('id', abstractNode.id);
+
+    option.innerText = abstractNode.value;
+
+    return option;
 }
 
 function label(label) {
