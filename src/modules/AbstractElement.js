@@ -1,7 +1,16 @@
 export default function abstractElement(element) {
-    const attributes = reduceAttributes(element);
+    const abstract = {};
 
-    return Object.assign({}, attributes, {type: element.tagName.toLowerCase(), value: element.value});
+    if (element.tagName.toLowerCase() === 'select') {
+        abstract.options = [];
+
+        for (const option of element.options) {
+            abstract.options.push(abstractElement(option));
+        }
+    }
+
+    const attributes = reduceAttributes(element);
+    return Object.assign({}, abstract, attributes, {tagName: element.tagName.toLowerCase(), value: element.value});
 }
 
 function reduceAttributes(element) {
