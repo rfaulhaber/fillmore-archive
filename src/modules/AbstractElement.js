@@ -14,6 +14,6 @@ export default function abstractElement(element) {
 }
 
 function reduceAttributes(element) {
-    return element.getAttributeNames().reduce((object, item) => 
+    return element.getAttributeNames().reduce((object, item) =>
         Object.assign({}, object, {[item]: element.getAttribute(item)}), {});
 }

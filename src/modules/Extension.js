@@ -20,16 +20,17 @@ export function show(id) {
 export function buildFormFill(tags) {
     const root = document.getElementById(layouts.formFill);
     console.log('root', root);
+    console.log('tags', tags);
     const rows = [];
 
     for (const tag of [].concat(tags.inputs, tags.selects)) {
         switch(tag.tagName) {
-            case 'input':
-                rows.push([label(tag.id), input(tag)]);
-                break;
-            case 'select':
-                rows.push([label(tag.id), select(tag)]);
-                break;
+        case 'input':
+            rows.push([label(tag.id), input(tag)]);
+            break;
+        case 'select':
+            rows.push([label(tag.id), select(tag)]);
+            break;
         }
     }
 

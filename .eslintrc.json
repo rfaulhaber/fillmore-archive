@@ -31,6 +31,20 @@
             "object": true
             }, {
                 "enforceForRenamedProperties": false
-            }]
+            }],
+        "no-trailing-spaces": [
+            "error",
+            {
+                "skipBlankLines": true
+            }
+        ],
+        "comma-dangle": [
+            "error",
+            "never"
+        ],
+        "arrow-parens": [
+            "error",
+            "as-needed"
+        ]
     }
 }
