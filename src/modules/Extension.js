@@ -25,44 +25,34 @@ export function buildFormFill(tags) {
     const root = document.getElementById(layouts.formFill);
     console.log('root', root);
     const rows = [];
-    for (const input of tags.inputs) {
-        console.log('input', input);
-        const labelNode = document.createElement('label');
-        const inputNode = document.createElement('input');
 
-        const inputLabel = input.id;
-        inputNode.setAttribute('id', input.id);
-
-        labelNode.innerText = inputLabel;
-
-        labelNode.setAttribute('for', inputLabel);
-
-        console.log('input type', input.type);
-
-        if (input.type === 'password') {
-            inputNode.type = 'text';
-        } else {
-            inputNode.type = input.type;
+    for (const tag of [].concat(tags.inputs, tags.selects)) {
+        switch(tag.tagName) {
+            case 'input':
+                rows.push([label(tag.id), input(tag)]);
+                break;
+            case 'select':
+                break;
         }
-
-        rows.push([labelNode, inputNode]);
     }
+
+    console.log('rows', rows);
     
-    root.insertBefore(buildTable(rows), document.getElementById('form-fill-save'));
+    root.insertBefore(table(rows), document.getElementById('form-fill-save'));
 }
 
-function buildTable(rows) {
+function table(rows) {
     const table = document.createElement('table');
-    const tableRows = rows.map(row => buildRow(buildDetail(row[0]), buildDetail(row[1])));
+    const tablerows = rows.map(row => tableRow(tableDetail(row[0]), tableDetail(row[1])));
 
-    for (const row of tableRows) {
+    for (const row of tablerows) {
         table.appendChild(row);
     }
 
     return table;
 }
 
-function buildRow(left, right) {
+function tableRow(left, right) {
     const tr = document.createElement('tr');
     tr.appendChild(left);
     tr.appendChild(right);
@@ -70,26 +60,41 @@ function buildRow(left, right) {
     return tr;
 }
 
-function buildDetail(content) {
+function tableDetail(content) {
     const td = document.createElement('td');
     td.appendChild(content);
 
     return td;
 }
 
-function buildInput(inputNode, input) {
+function input(node) {
+    const input = document.createElement('input');
+    input.setAttribute('id', node.id);
+
+    if (node.type === 'password') {
+        input.type = 'text';
+    } else {
+        input.type = node.type;
+    }
+
+    return input;
+}
+
+function select(selectNode, select) {
 
 }
 
-function buildSelect(selectNode, select) {
+function label(label) {
+    const labelNode = document.createElement('label');
 
+    // the generated label text and the ID the label is for are the same
+    labelNode.setAttribute('for', label);
+    labelNode.innerText = label;
+
+    return labelNode;
 }
 
-function buildLabel(labelNode, label) {
-
-}
-
-function buildDiv(divNode, div) {
+function div(divNode, div) {
 
 }
 
