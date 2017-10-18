@@ -23,13 +23,25 @@ export function buildFormFill(tags) {
     console.log('tags', tags);
     const rows = [];
 
-    for (const tag of [].concat(tags.inputs, tags.selects)) {
+    const fillable = [].concat(tags.inputs, tags.selects);
+    console.log('fillable', fillable);
+    const labels = tags.labels;
+
+    for (const label of labels) {
+        for (const input of fillable) {
+            if (label.for === input.id) {
+                input.label = label.innerText;
+            }
+        }
+    }
+
+    for (const tag of fillable) {
         switch(tag.tagName) {
         case 'input':
-            rows.push([label(tag.id), input(tag)]);
+            rows.push([label(tag.label || tag.id), input(tag)]);
             break;
         case 'select':
-            rows.push([label(tag.id), select(tag)]);
+            rows.push([label(tag.label || tag.id), select(tag)]);
             break;
         }
     }

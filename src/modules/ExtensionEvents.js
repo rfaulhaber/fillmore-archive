@@ -1,4 +1,4 @@
-import {layouts, show} from './Extension';
+import { layouts, show } from './Extension';
 import { queryCurrentTab, sendContentMessage } from './Browser';
 import { buildFormFill } from './Extension';
 
@@ -35,4 +35,8 @@ export function setAllListeners(listeners) {
         const {id, type, callback} = listener;
         document.getElementById(id).addEventListener(type, callback);
     }
+}
+
+export function onChangeListener() {
+
 }
