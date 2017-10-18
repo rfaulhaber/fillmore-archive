@@ -80,6 +80,7 @@ function tableDetail(content) {
 function input(abstractNode) {
     const input = document.createElement('input');
     input.setAttribute('id', abstractNode.id);
+    input.setAttribute('name', abstractNode.name)
 
     if (abstractNode.type === 'password') {
         input.type = 'text';
@@ -120,10 +121,6 @@ function label(label) {
     labelNode.innerText = label;
 
     return labelNode;
-}
-
-function div(divNode, div) {
-
 }
 
 function hide(element) {

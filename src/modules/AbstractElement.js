@@ -14,10 +14,16 @@ export default function abstractElement(element) {
     }
 
     const attributes = reduceAttributes(element);
-    return Object.assign({}, abstract, attributes, {tagName, value: element.value, innerText: element.innerText});
+    return Object.assign({}, abstract, attributes, {
+        tagName,
+        value: element.value,
+        innerText: element.innerText
+    });
 }
 
 function reduceAttributes(element) {
     return element.getAttributeNames().reduce((object, item) =>
-        Object.assign({}, object, {[item]: element.getAttribute(item)}), {});
+        Object.assign({}, object, {
+            [item]: element.getAttribute(item)
+        }), {});
 }

@@ -8,14 +8,16 @@ export function scanButtonListener() {
         type: 'click',
         callback: () => {
             console.log('I was clicked!');
-            show(layouts.formFill);
 
             queryCurrentTab(chrome).then(tab => {
+                show(layouts.formFill);
                 return sendContentMessage(chrome, tab.id, {type: 'GET_INPUTS'});
             }).then(response => {
                 console.log('response', response);
 
                 buildFormFill(response);
+            }).catch(err => {
+                console.error('fillmore: could not retrieve page content, please try again');
             });
         }
     };
